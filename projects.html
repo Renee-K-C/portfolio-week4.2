@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jiarui Zhou — Projects</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Jiarui<span>Zhou</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Projects Header -->
+  <section class="section" style="padding-top: 4rem;">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">My Work</span>
+        <h2>Featured Projects</h2>
+        <p>
+          A selection of things I've built recently — from side projects to
+          production apps. Click any card to learn more.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #ff3d8b, #8fded4);">K-pop</div>
+          <div class="project-body">
+            <h3>K-pop News</h3>
+            <p>A fun fan-made website for aggregating the latest K-pop news, comebacks, and updates from your favorite groups.</p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">News</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #6a0dad, #ff3d8b);">R&B</div>
+          <div class="project-body">
+            <h3>R&B Music Zone</h3>
+            <p>A tribute to the golden voices of classic R&B — Marvin Gaye, Stevie Wonder, Aretha Franklin, and more. Their sound defined generations.</p>
+            <div class="project-tags">
+              <span class="tag">Music</span>
+              <span class="tag">Profiles</span>
+              <span class="tag">Vintage</span>
+              <span class="tag">Soul</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- K-Pop Concert Calendar -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">🎤 Fan Zone</span>
+        <h2>K-Pop Concert Calendar</h2>
+        <p>Upcoming shows from your favorite stars. Pick an emoji + priority when adding your own, and leave a comment below each concert!</p>
+      </div>
+
+      <div class="concert-app">
+        <!-- Progress bar -->
+        <div class="concert-progress">
+          <span class="concert-progress-text"><span id="going-count">0</span> of <span id="total-count">0</span> concerts marked <span class="going-label">💖 Going</span></span>
+          <div class="concert-progress-bar"><div id="going-bar" class="concert-progress-fill"></div></div>
+        </div>
+
+        <!-- Concert list -->
+        <div id="concert-list" class="concert-list"></div>
+
+        <!-- Add form -->
+        <div class="concert-add">
+          <h3 style="margin-bottom: 1rem;">➕ Add your own concert</h3>
+
+          <div class="concert-input-row">
+            <input type="date" id="concert-date" class="concert-date-input" />
+            <input type="text" id="concert-artist" class="concert-text-input" placeholder="Artist (e.g., IU)" />
+            <input type="text" id="concert-venue" class="concert-text-input" placeholder="Venue & City" />
+          </div>
+
+          <!-- Emoji picker -->
+          <div class="emoji-picker-wrap">
+            <span class="picker-label">Mood:</span>
+            <div class="emoji-picker" id="emoji-picker">
+              <button type="button" class="emoji-btn" data-emoji="💖">💖</button>
+              <button type="button" class="emoji-btn" data-emoji="🔥">🔥</button>
+              <button type="button" class="emoji-btn" data-emoji="✨">✨</button>
+              <button type="button" class="emoji-btn" data-emoji="🎤">🎤</button>
+              <button type="button" class="emoji-btn" data-emoji="💫">💫</button>
+              <button type="button" class="emoji-btn" data-emoji="🌸">🌸</button>
+              <button type="button" class="emoji-btn" data-emoji="🎶">🎶</button>
+              <button type="button" class="emoji-btn" data-emoji="🥳">🥳</button>
+              <button type="button" class="emoji-btn selected" data-emoji="🎫">🎫</button>
+            </div>
+          </div>
+
+          <!-- Priority -->
+          <div class="priority-wrap">
+            <span class="picker-label">Priority:</span>
+            <div class="priority-picker">
+              <label class="priority-option priority-low">
+                <input type="radio" name="priority" value="low" />
+                <span>Low 🌱</span>
+              </label>
+              <label class="priority-option priority-medium selected">
+                <input type="radio" name="priority" value="medium" checked />
+                <span>Medium ⭐</span>
+              </label>
+              <label class="priority-option priority-high">
+                <input type="radio" name="priority" value="high" />
+                <span>High 🔥</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="concert-add-btn-row">
+            <button id="concert-add" class="btn btn-primary concert-add-btn">Add Concert</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- R&B Music Zone -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">🎶 R&B Music Zone</span>
+        <h2>Classic R&B Legends</h2>
+        <p>The golden voices that shaped R&B — from Motown to the Quiet Storm. These are the artists whose grooves and ballads still hit hard.</p>
+      </div>
+
+      <div class="rnb-grid">
+
+        <article class="rnb-card">
+          <div class="rnb-portrait">
+            <img src="marvin_gaye.jpg" alt="Marvin Gaye" style="object-position: 50% 18%;" />
+          </div>
+          <div class="rnb-info">
+            <h3>Marvin Gaye</h3>
+            <span class="rnb-years">1939 – 1984</span>
+            <p>The Prince of Motown. From "Let's Get It On" to "Sexual Healing," his smooth falsetto and socially conscious lyrics redefined soul music. <em>"What's Going On"</em> remains one of the greatest albums ever made.</p>
+          </div>
+        </article>
+
+        <article class="rnb-card">
+          <div class="rnb-portrait">
+            <img src="stevie_wonder.jpg" alt="Stevie Wonder" />
+          </div>
+          <div class="rnb-info">
+            <h3>Stevie Wonder</h3>
+            <span class="rnb-years">1950 – present</span>
+            <p>A blind prodigy who became one of the most influential musicians in history. "Superstition," "Isn't She Lovely," and "Higher Ground" showcase his genius as a singer, songwriter, and multi-instrumentalist.</p>
+          </div>
+        </article>
+
+        <article class="rnb-card">
+          <div class="rnb-portrait">
+            <img src="aretha_franklin.jpg" alt="Aretha Franklin" style="object-position: 50% 20%;" />
+          </div>
+          <div class="rnb-info">
+            <h3>Aretha Franklin</h3>
+            <span class="rnb-years">1942 – 2018</span>
+            <p>The undisputed Queen of Soul. Her voice could move mountains — hear it in "Respect," "Think," and "Natural Woman." A symbol of strength, grace, and the civil rights movement.</p>
+          </div>
+        </article>
+
+        <article class="rnb-card">
+          <div class="rnb-portrait">
+            <img src="luther_vandross.jpg" alt="Luther Vandross" style="object-position: 50% 35%;" />
+          </div>
+          <div class="rnb-info">
+            <h3>Luther Vandross</h3>
+            <span class="rnb-years">1951 – 2005</span>
+            <p>The Velvet Voice. Luther ruled Quiet Storm radio with silky ballads like "Here and Now" and "Dance with My Father." Eight Grammy wins and a legacy of romance in every note.</p>
+          </div>
+        </article>
+
+        <article class="rnb-card">
+          <div class="rnb-portrait">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vintage+illustration+portrait+of+Otis+Redding+soulful+singer+1960s+tousled+hair+suit+and+tie+pushing+stage+mic+retro&image_size=portrait_4_3" alt="Otis Redding portrait" />
+          </div>
+          <div class="rnb-info">
+            <h3>Otis Redding</h3>
+            <span class="rnb-years">1941 – 1967</span>
+            <p>The King of Soul. His raw, fiery delivery on "(Sittin' On) The Dock of the Bay," "Try a Little Tenderness," and "I've Been Loving You Too Long" defined the Stax sound — and influenced every R&B singer who came after.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- My Favorite Singers -->
+  <section class="section section-alt" id="fav-singers">
+    <div class="aura aura-mint"></div>
+    <div class="aura aura-pink"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">💗 Personal Picks</span>
+        <h2>My Favorite Singers</h2>
+        <p>The voices that live in my heart — the ones I never get tired of listening to.</p>
+      </div>
+
+      <!-- Whitney Houston Feature -->
+      <div class="fav-artist">
+        <div class="fav-artist-header">
+          <div class="fav-artist-crown">👑</div>
+          <h3>Whitney Houston</h3>
+          <span class="fav-artist-years">1963 – 2012</span>
+          <p class="fav-artist-bio">
+            <em>The Voice.</em> From "I Will Always Love You" to "Greatest Love of All,"
+            her power was unmatched. She bridged R&B and pop, becoming one of the
+            best-selling artists of all time. My absolute favorite — nobody comes close. 💕
+          </p>
+        </div>
+
+        <div class="fav-carousel">
+          <button class="fav-carousel-btn fav-carousel-prev" onclick="whitneyPrev()" aria-label="Previous photo">❮</button>
+          <div class="fav-carousel-stage">
+            <img id="whitney-img" src="whitney_houston.jpg" alt="Whitney Houston" />
+            <span class="fav-carousel-count" id="whitney-count">1 / 4</span>
+          </div>
+          <button class="fav-carousel-btn fav-carousel-next" onclick="whitneyNext()" aria-label="Next photo">❯</button>
+        </div>
+      </div>
+
+      <!-- Babyface (placeholder) -->
+      <div class="fav-artist fav-artist-placeholder">
+        <div class="fav-artist-header">
+          <div class="fav-artist-crown" style="opacity:0.4;">🎤</div>
+          <h3 style="opacity:0.6;">Babyface</h3>
+          <span class="fav-artist-years">Coming Soon</span>
+          <p class="fav-artist-bio" style="font-style:italic; color:var(--text-muted);">
+            Spot reserved for the legendary Kenneth "Babyface" Edmonds — photo and bio coming soon! ✨
+          </p>
+        </div>
+        <div class="fav-gallery fav-gallery-empty">
+          <div class="fav-gallery-main fav-gallery-empty-main">
+            <span style="font-size:4rem;">🎤</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">🐙</a>
+        <a href="#" aria-label="LinkedIn">💼</a>
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Email">✉️</a>
+      </div>
+      <p>© <span id="year"></span> Jiarui Zhou. Built with care.</p>
+    </div>
+  </footer>
+
+  <!-- Supabase JS SDK (required for cloud sync) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+  <script>
+    // Whitney Houston photo carousel
+    var whitneyPhotos = [
+      'whitney_houston.jpg',
+      'whitney_2.jpg',
+      'whitney_3.jpg',
+      'whitney_4.jpg'
+    ];
+    var whitneyIndex = 0;
+
+    function whitneyUpdate() {
+      var img = document.getElementById('whitney-img');
+      var count = document.getElementById('whitney-count');
+      img.style.opacity = '0';
+      setTimeout(function() {
+        img.src = whitneyPhotos[whitneyIndex];
+        img.style.opacity = '1';
+      }, 150);
+      count.textContent = (whitneyIndex + 1) + ' / ' + whitneyPhotos.length;
+    }
+
+    function whitneyNext() {
+      whitneyIndex = (whitneyIndex + 1) % whitneyPhotos.length;
+      whitneyUpdate();
+    }
+
+    function whitneyPrev() {
+      whitneyIndex = (whitneyIndex - 1 + whitneyPhotos.length) % whitneyPhotos.length;
+      whitneyUpdate();
+    }
+  </script>
+  <script>
+    (function () {
+      'use strict';
+
+      // Pre-seeded famous K-pop concerts (2026) — used to seed Supabase on first run
+      const defaultConcerts = [
+        { artist: 'IU',                 date: '2026-03-15', venue: 'Olympic Gymnastics Arena, Seoul', emoji: '💖', priority: 'high' },
+        { artist: 'BLACKPINK',          date: '2026-04-12', venue: 'Kyocera Dome, Osaka',              emoji: '🔥', priority: 'high' },
+        { artist: 'BLACKPINK',          date: '2026-04-19', venue: 'Gocheok Sky Dome, Seoul',          emoji: '🔥', priority: 'high' },
+        { artist: 'Stray Kids',         date: '2026-05-03', venue: 'The Forum, Los Angeles',           emoji: '🎶', priority: 'medium' },
+        { artist: 'Stray Kids',         date: '2026-05-10', venue: 'Prudential Center, Newark',        emoji: '🎶', priority: 'medium' },
+        { artist: 'SEVENTEEN',          date: '2026-06-07', venue: 'Singapore Indoor Stadium',         emoji: '💫', priority: 'medium' },
+        { artist: 'SEVENTEEN',          date: '2026-06-14', venue: 'Impact Arena, Bangkok',            emoji: '💫', priority: 'medium' },
+        { artist: 'TWICE',              date: '2026-07-05', venue: 'T-Mobile Center, Kansas City',     emoji: '✨', priority: 'medium' },
+        { artist: 'NewJeans',           date: '2026-07-26', venue: 'KSPO Dome, Seoul',                 emoji: '🌸', priority: 'high' },
+        { artist: 'aespa',              date: '2026-08-02', venue: 'Makuhari Messe, Tokyo',             emoji: '🔥', priority: 'medium' },
+        { artist: 'LE SSERAFIM',        date: '2026-08-16', venue: 'Seoul Olympic Hall',               emoji: '🌸', priority: 'medium' },
+        { artist: 'TXT',                date: '2026-09-06', venue: 'Hong Kong Coliseum',               emoji: '🎤', priority: 'low' },
+        { artist: 'BTS (OT7)',          date: '2026-10-11', venue: 'Busan Asiad Main Stadium',          emoji: '💖', priority: 'high' },
+        { artist: 'BTS (OT7)',          date: '2026-10-18', venue: 'Seoul World Cup Stadium',           emoji: '💖', priority: 'high' },
+        { artist: 'SNSD Taeyeon',       date: '2026-11-08', venue: 'Blue Square Mastercard, Seoul',    emoji: '✨', priority: 'medium' },
+      ];
+
+      // Pre-seeded warm fan comments per artist (kept in localStorage — local-only)
+      const defaultComments = {
+        'IU': [
+          { user: 'Lily',   avatar: '🌙', text: 'IU\'s voice is like a warm hug — I\'ll be front row for sure! 💛' },
+          { user: 'Minho',  avatar: '🐰', text: 'Already bought my ticket. Can\'t wait to hear "Through the Night" live!' },
+        ],
+        'BLACKPINK': [
+          { user: 'Jade',   avatar: '🖤', text: 'Finally seeing them live after 4 years! Rose\'s high notes are gonna be insane.' },
+          { user: 'Lisa',   avatar: '🌸', text: 'Bringing all my lightstick batteries. Let\'s make the dome shake! ✨' },
+        ],
+        'Stray Kids': [
+          { user: 'Felix',  avatar: '🐣', text: 'SKZ in LA?! Saving up every penny. Bang Chan, I\'m coming!' },
+          { user: 'Olive',  avatar: '🎧', text: 'Their energy is unreal. Earplugs + lightstick + voice = ready!' },
+        ],
+        'SEVENTEEN': [
+          { user: 'Carat',  avatar: '💎', text: '13 members on stage — my heart can\'t handle it. Carats unite!' },
+          { user: 'Mia',    avatar: '🌟', text: 'Wonwoo + Mingyu in one night? I need a moment 😭' },
+        ],
+        'TWICE': [
+          { user: 'Nayeon', avatar: '🍭', text: 'Twice in Kansas City — I\'m driving 5 hours. Totally worth it!' },
+          { user: 'Sana',   avatar: '💖', text: 'Cheer up, baby! Can\'t wait to see all 9 queens on stage.' },
+        ],
+        'NewJeans': [
+          { user: 'Hanni',  avatar: '🐰', text: 'OMG NewJeans dome concert?! Their stage presence is next level.' },
+          { user: 'Dani',   avatar: '☁️', text: 'Super Shy live is gonna break the internet. I\'m ready!' },
+        ],
+        'aespa': [
+          { user: 'Winter', avatar: '❄️', text: 'Aespa in Tokyo — Karina, Giselle, Winter, Ningning all in one place! ❤️' },
+        ],
+        'LE SSERAFIM': [
+          { user: 'Chaewon',avatar: '⚔️', text: 'Fearnots, let\'s make some noise! Sakura and Chaewon together again 🌸' },
+        ],
+        'TXT': [
+          { user: 'Soobin', avatar: '🐧', text: 'TXT in Hong Kong! Yeonjun\'s stage charisma is unmatched. See you there!' },
+        ],
+        'BTS (OT7)': [
+          { user: 'Army',   avatar: '💜', text: 'OT7 reunion in Busan — I\'m crying just thinking about it. Purple you forever!' },
+          { user: 'Seokjin',avatar: '🦙', text: 'Jin is back on stage! 2026 is the year of BTS OT7. LET\'S GO!' },
+          { user: 'Taehyung',avatar:'🐯', text: 'World Cup Stadium full of ARMY bombs — this will be historic. 💜' },
+        ],
+        'SNSD Taeyeon': [
+          { user: 'Sone',   avatar: '💙', text: 'Taeyeon\'s voice is pure magic. A queen on stage, always.' },
+        ],
+      };
+
+      // --- Supabase config ---
+      const SUPABASE_URL = 'https://rpztzwnezutngvyvvkrh.supabase.co';
+      const SUPABASE_KEY = 'sb_publishable_YEqBNpijQyHhH70KK97vsQ_8q_9_RI5';
+      let supabase = null;
+      try {
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+      } catch (err) {
+        console.error('Supabase init failed:', err);
+      }
+
+      // --- DB helpers (todos table) ---
+      async function dbLoad() {
+        const { data, error } = await supabase
+          .from('todos')
+          .select('id,task,is_complete,date,created_at')
+          .order('date', { ascending: true });
+        if (error) throw error;
+        return (data || []).map(function (r) {
+          // Concert metadata (artist/venue/emoji/priority) is stored as JSON in `task`.
+          let meta = {};
+          try { meta = JSON.parse(r.task) || {}; }
+          catch (_) { meta = { artist: typeof r.task === 'string' ? r.task : '' }; }
+          return {
+            id: String(r.id),
+            artist: meta.artist || (typeof r.task === 'string' ? r.task : '') || 'Untitled',
+            date: typeof r.date === 'string' ? r.date.slice(0, 10) : r.date,
+            venue: meta.venue || '',
+            emoji: meta.emoji || '🎫',
+            priority: meta.priority || 'medium',
+            going: !!r.is_complete
+          };
+        });
+      }
+      async function dbInsert(c) {
+        const { data, error } = await supabase.from('todos').insert({
+          task: JSON.stringify({ artist: c.artist, venue: c.venue, emoji: c.emoji, priority: c.priority }),
+          date: c.date,
+          is_complete: false
+        }).select();
+        if (error) throw error;
+        return data[0];
+      }
+      async function dbUpdate(id, patch) {
+        const { error } = await supabase.from('todos').update(patch).eq('id', id);
+        if (error) throw error;
+      }
+      async function dbDelete(id) {
+        const { error } = await supabase.from('todos').delete().eq('id', id);
+        if (error) throw error;
+      }
+      async function dbSeed() {
+        const rows = defaultConcerts.map(function (c) {
+          return {
+            task: JSON.stringify({ artist: c.artist, venue: c.venue, emoji: c.emoji, priority: c.priority }),
+            date: c.date,
+            is_complete: false
+          };
+        });
+        const { error } = await supabase.from('todos').insert(rows);
+        if (error) throw error;
+      }
+
+      const listEl       = document.getElementById('concert-list');
+      const dateIn       = document.getElementById('concert-date');
+      const artistIn     = document.getElementById('concert-artist');
+      const venueIn      = document.getElementById('concert-venue');
+      const addBtn       = document.getElementById('concert-add');
+      const emojiPicker  = document.getElementById('emoji-picker');
+
+      let concerts = [];      // { id, artist, date, venue, emoji, priority, going }
+      let comments = {};
+      let selectedEmoji = '🎫';
+      let selectedPriority = 'medium';
+
+      // Load local comments (concerts now live in Supabase)
+      try {
+        comments = JSON.parse(localStorage.getItem('kp-comments') || 'null');
+        if (!comments || typeof comments !== 'object') comments = {};
+      } catch (_) { comments = {}; }
+
+      // Seed default comments if none saved
+      Object.keys(defaultComments).forEach(function (artist) {
+        if (!comments[artist]) comments[artist] = defaultComments[artist].slice();
+      });
+
+      dateIn.value = new Date().toISOString().split('T')[0];
+
+      function saveComments() {
+        localStorage.setItem('kp-comments', JSON.stringify(comments));
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function formatDateFull(dateStr) {
+        const d = new Date(dateStr + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+
+      function formatMonthDay(dateStr) {
+        const d = new Date(dateStr + 'T00:00:00');
+        return {
+          month: d.toLocaleDateString('en-US', { month: 'short' }),
+          day: d.getDate()
+        };
+      }
+
+      function isPast(dateStr) {
+        return new Date(dateStr + 'T00:00:00') < new Date(new Date().toDateString());
+      }
+
+      function priorityClass(p) {
+        return 'priority-badge priority-' + p;
+      }
+      function priorityLabel(p) {
+        return { low: 'Low 🌱', medium: 'Medium ⭐', high: 'High 🔥' }[p] || p;
+      }
+
+      function render() {
+        listEl.innerHTML = '';
+
+        const upcoming = concerts.filter(function (c) { return !isPast(c.date); });
+        const goingCount = upcoming.filter(function (c) { return c.going; }).length;
+
+        const goingEl = document.getElementById('going-count');
+        const totalEl = document.getElementById('total-count');
+        const barEl   = document.getElementById('going-bar');
+        if (goingEl) goingEl.textContent = goingCount;
+        if (totalEl) totalEl.textContent = upcoming.length;
+        if (barEl)   barEl.style.width = upcoming.length ? (goingCount / upcoming.length * 100) + '%' : '0%';
+
+        concerts
+          .slice()
+          .sort(function (a, b) { return a.date.localeCompare(b.date); })
+          .forEach(function (c) {
+            const md = formatMonthDay(c.date);
+            const past = isPast(c.date);
+            const going = !!c.going;
+            const emoji = c.emoji || '🎫';
+            const priority = c.priority || 'medium';
+
+            const card = document.createElement('article');
+            card.className = 'concert-card' + (past ? ' past' : '') + (going ? ' going' : '');
+            card.dataset.key = c.id;
+
+            card.innerHTML =
+              '<div class="concert-date">' +
+                '<span class="concert-month">' + md.month + '</span>' +
+                '<span class="concert-day">' + md.day + '</span>' +
+              '</div>' +
+              '<div class="concert-info">' +
+                '<div class="concert-meta-row">' +
+                  '<h3 class="concert-artist concert-editable" contenteditable="true" spellcheck="false" data-field="artist">' + escapeHtml(c.artist) + '</h3>' +
+                  '<span class="' + priorityClass(priority) + '">' + priorityLabel(priority) + '</span>' +
+                  '<button type="button" class="concert-delete" data-action="delete" data-key="' + c.id + '" aria-label="Delete concert" title="Delete concert">×</button>' +
+                '</div>' +
+                '<div class="concert-venue">' +
+                  '<span class="concert-venue-emoji">' + emoji + '</span> ' +
+                  '<span class="concert-editable" contenteditable="true" spellcheck="false" data-field="venue">' + escapeHtml(c.venue) + '</span>' +
+                '</div>' +
+                '<div class="concert-full-date">' + formatDateFull(c.date) + '</div>' +
+              '</div>' +
+              '<label class="concert-going">' +
+                '<input type="checkbox" class="concert-checkbox"' + (going ? ' checked' : '') + ' data-key="' + c.id + '" />' +
+                '<span class="concert-going-label">' + (going ? '💖 Going!' : '🎫 Going?') + '</span>' +
+              '</label>';
+
+            // Build comment section
+            const artistComments = comments[c.artist] || [];
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'concert-comments';
+            commentDiv.dataset.artist = c.artist;
+
+            let commentsHtml = '';
+            if (artistComments.length > 0) {
+              commentsHtml += '<div class="comments-list">';
+              artistComments.forEach(function(cmt, idx) {
+                commentsHtml +=
+                  '<div class="comment-item">' +
+                    '<div class="comment-avatar">' + (cmt.avatar || '💬') + '</div>' +
+                    '<div class="comment-body">' +
+                      '<div class="comment-header">' +
+                        '<span class="comment-user">' + escapeHtml(cmt.user || 'Fan') + '</span>' +
+                        '<button class="comment-delete" data-idx="' + idx + '" aria-label="Delete comment">×</button>' +
+                      '</div>' +
+                      '<div class="comment-text">' + escapeHtml(cmt.text) + '</div>' +
+                    '</div>' +
+                  '</div>';
+              });
+              commentsHtml += '</div>';
+            } else {
+              commentsHtml = '<div class="comments-empty">Be the first to leave a warm comment 💌</div>';
+            }
+
+            commentsHtml +=
+              '<div class="comment-form">' +
+                '<input type="text" class="comment-avatar-input" placeholder="Avatar 😊" maxlength="2" />' +
+                '<input type="text" class="comment-user-input" placeholder="Your name" maxlength="20" />' +
+                '<input type="text" class="comment-text-input" placeholder="Leave a warm message..." maxlength="200" />' +
+                '<button class="comment-send">💌</button>' +
+              '</div>';
+
+            commentDiv.innerHTML = commentsHtml;
+            card.appendChild(commentDiv);
+            listEl.appendChild(card);
+          });
+      }
+
+      // --- Emoji picker ---
+      emojiPicker.addEventListener('click', function(e) {
+        const btn = e.target.closest('.emoji-btn');
+        if (!btn) return;
+        selectedEmoji = btn.dataset.emoji;
+        emojiPicker.querySelectorAll('.emoji-btn').forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+      });
+
+      // --- Priority picker ---
+      document.querySelectorAll('input[name="priority"]').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          selectedPriority = radio.value;
+          document.querySelectorAll('.priority-option').forEach(function(o) { o.classList.remove('selected'); });
+          radio.closest('.priority-option').classList.add('selected');
+        });
+      });
+
+      // --- Add concert (insert into Supabase) ---
+      async function addConcert() {
+        const artist = artistIn.value.trim();
+        const venue  = venueIn.value.trim();
+        const date   = dateIn.value;
+        if (!artist || !venue) {
+          if (!artist) artistIn.focus();
+          else venueIn.focus();
+          return;
+        }
+        let row;
+        try {
+          row = await dbInsert({
+            artist: artist, date: date, venue: venue,
+            emoji: selectedEmoji, priority: selectedPriority
+          });
+        } catch (err) {
+          console.error('Insert failed:', err);
+          alert('Could not save concert to Supabase. See console for details.');
+          return;
+        }
+        concerts.push({
+          id: String(row.id), artist: artist, date: date, venue: venue,
+          emoji: selectedEmoji, priority: selectedPriority, going: false
+        });
+        if (!comments[artist]) comments[artist] = [];
+        saveComments();
+        render();
+        artistIn.value = '';
+        venueIn.value = '';
+        artistIn.focus();
+      }
+
+      addBtn.addEventListener('click', addConcert);
+      [artistIn, venueIn].forEach(function (el) {
+        el.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') addConcert();
+        });
+      });
+
+      // --- Toggle "going" (update is_complete in Supabase) ---
+      listEl.addEventListener('change', async function (e) {
+        if (!e.target.classList.contains('concert-checkbox')) return;
+        const id = e.target.dataset.key;
+        const c = concerts.find(function (x) { return x.id === id; });
+        if (!c) return;
+        c.going = e.target.checked;
+        render();
+        try { await dbUpdate(id, { is_complete: c.going }); }
+        catch (err) { console.error('Update going failed:', err); }
+      });
+
+      // --- Delete concert (remove from Supabase) ---
+      listEl.addEventListener('click', async function (e) {
+        if (!e.target.classList.contains('concert-delete')) return;
+        const id = e.target.dataset.key;
+        try {
+          await dbDelete(id);
+        } catch (err) {
+          console.error('Delete failed:', err);
+          alert('Could not delete concert from Supabase. See console for details.');
+          return;
+        }
+        concerts = concerts.filter(function (x) { return x.id !== id; });
+        render();
+      });
+
+      // --- Comment interactions ---
+      listEl.addEventListener('click', function(e) {
+        // Delete comment
+        if (e.target.classList.contains('comment-delete')) {
+          const commentDiv = e.target.closest('.concert-comments');
+          const artist = commentDiv.dataset.artist;
+          const idx = parseInt(e.target.dataset.idx, 10);
+          if (!isNaN(idx) && comments[artist]) {
+            comments[artist].splice(idx, 1);
+            saveComments();
+            render();
+          }
+        }
+      });
+
+      // --- Inline edit (artist / venue) — saves changes to Supabase ---
+      let editSnapshot = null; // { el, field, id, oldArtist, oldVenue, startHTML }
+
+      listEl.addEventListener('focus', function(e) {
+        if (!e.target.classList.contains('concert-editable')) return;
+        const card = e.target.closest('.concert-card');
+        const cIdx = concerts.findIndex(function (c) { return c.id === card.dataset.key; });
+        if (cIdx === -1) return;
+        editSnapshot = {
+          el: e.target,
+          field: e.target.dataset.field,
+          id: concerts[cIdx].id,
+          oldArtist: concerts[cIdx].artist,
+          oldVenue:  concerts[cIdx].venue,
+          startHTML: e.target.innerHTML
+        };
+        // Select all text for easy replacement
+        const range = document.createRange();
+        range.selectNodeContents(e.target);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }, true);
+
+      listEl.addEventListener('keydown', function(e) {
+        if (e.target.classList.contains('concert-editable')) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            e.target.blur(); // trigger save via blur
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            if (editSnapshot) {
+              editSnapshot.el.innerHTML = editSnapshot.startHTML;
+              editSnapshot = null;
+            }
+            e.target.blur();
+          }
+        }
+      });
+
+      listEl.addEventListener('blur', async function(e) {
+        if (!e.target.classList.contains('concert-editable')) return;
+        if (!editSnapshot || editSnapshot.el !== e.target) return;
+
+        const field  = editSnapshot.field;
+        const newVal = e.target.textContent.trim();
+        const oldVal = editSnapshot['old' + field.charAt(0).toUpperCase() + field.slice(1)];
+        if (!newVal || newVal === oldVal) {
+          // no change or empty → revert
+          e.target.innerHTML = editSnapshot.startHTML;
+          editSnapshot = null;
+          return;
+        }
+
+        const cIdx = concerts.findIndex(function (c) { return c.id === editSnapshot.id; });
+        if (cIdx === -1) { editSnapshot = null; return; }
+
+        if (field === 'artist') {
+          const oldArtist = editSnapshot.oldArtist;
+          const newArtist = newVal;
+          concerts[cIdx].artist = newArtist;
+          // Migrate comments to the new artist key
+          if (comments[oldArtist] && oldArtist !== newArtist) {
+            comments[newArtist] = (comments[newArtist] || []).concat(comments[oldArtist]);
+            delete comments[oldArtist];
+          }
+        } else if (field === 'venue') {
+          concerts[cIdx].venue = newVal;
+        }
+
+        const patch = { task: JSON.stringify({
+          artist: concerts[cIdx].artist,
+          venue: concerts[cIdx].venue,
+          emoji: concerts[cIdx].emoji,
+          priority: concerts[cIdx].priority
+        }) };
+        const editId = editSnapshot.id;
+        editSnapshot = null;
+        saveComments();
+        render();
+        try { await dbUpdate(editId, patch); }
+        catch (err) { console.error('Update concert failed:', err); }
+      }, true);
+
+      listEl.addEventListener('keydown', function(e) {
+        if (e.key !== 'Enter') return;
+        const sendBtn = e.target.closest('.comment-form');
+        if (!sendBtn) return;
+        addComment(sendBtn);
+      });
+
+      listEl.addEventListener('click', function(e) {
+        if (e.target.classList.contains('comment-send')) {
+          const form = e.target.closest('.comment-form');
+          addComment(form);
+        }
+      });
+
+      function addComment(form) {
+        const commentDiv = form.closest('.concert-comments');
+        const artist = commentDiv.dataset.artist;
+        const avatar = form.querySelector('.comment-avatar-input').value.trim() || '💬';
+        const user   = form.querySelector('.comment-user-input').value.trim() || 'Anonymous Fan';
+        const text   = form.querySelector('.comment-text-input').value.trim();
+        if (!text) {
+          form.querySelector('.comment-text-input').focus();
+          return;
+        }
+        if (!comments[artist]) comments[artist] = [];
+        comments[artist].push({ avatar: avatar, user: user, text: text });
+        saveComments();
+        render();
+      }
+
+      // --- Init: load concerts from Supabase (ordered by date) ---
+      async function init() {
+        if (!supabase || !window.supabase) {
+          listEl.innerHTML = '<div class="comments-empty" style="padding:2rem;text-align:center;">⚠️ Could not load the Supabase JS SDK. Check your network connection and refresh.</div>';
+          return;
+        }
+        try {
+          let rows = await dbLoad();
+          if (rows.length === 0 && !localStorage.getItem('kp-seeded')) {
+            await dbSeed();
+            localStorage.setItem('kp-seeded', '1');
+            rows = await dbLoad();
+          }
+          concerts = rows;
+        } catch (err) {
+          console.error('Load failed:', err);
+          listEl.innerHTML = '<div class="comments-empty" style="padding:2rem;text-align:center;">⚠️ Could not load concerts from Supabase. Make sure the <code>todos</code> table exists (see the SQL in chat) and that RLS allows access with the publishable key.</div>';
+          return;
+        }
+        render();
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>
